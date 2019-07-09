@@ -1,4 +1,5 @@
 ﻿using System;
+using TestXamarin.Page;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,7 +12,8 @@ namespace TestXamarin
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new AuthorizationPage();
+            //MainPage = new MainPage();
         }
 
         protected override void OnStart()
