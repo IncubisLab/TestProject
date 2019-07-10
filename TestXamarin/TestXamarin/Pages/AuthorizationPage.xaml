@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TestXamarin.Page.RegistrationPage"
-             Title="Регистрация">
+             x:Class="TestXamarin.Pages.AuthorizationPage"
+             Title="Авторизация">
     <ContentPage.Content>
-        <StackLayout
+        <StackLayout 
             VerticalOptions="CenterAndExpand"
             HorizontalOptions="CenterAndExpand">
             <StackLayout
                 Orientation="Vertical">
-                <Label
+                <Label 
                     Text="Логин"
                     TextColor="Black"
                     VerticalOptions="CenterAndExpand"/>
@@ -18,32 +18,6 @@
                     Placeholder="Введите логин"
                     Keyboard="Default"
                     HorizontalOptions="FillAndExpand"/>
-            </StackLayout>
-            
-            <StackLayout
-                Orientation="Vertical">
-                <Label
-                    Text ="Имя пользователя"
-                    TextColor="Black"
-                    VerticalOptions="CenterAndExpand"/>
-                <Entry
-                    Text="{Binding Name}"
-                    Placeholder="Введите имя пользователя"
-                    Keyboard="Default"
-                    HorizontalOptions="FillAndExpand"/>
-            </StackLayout>
-
-            <StackLayout
-                Orientation="Vertical">
-                  <Label
-                      Text="Фамилия пользователя"
-                      TextColor="Black"
-                      VerticalOptions="CenterAndExpand"/>
-                  <Entry
-                      Text="{Binding LastName}"
-                      Placeholder= "Введите фамилию пользователя"
-                      Keyboard="Text"
-                      HorizontalOptions="FillAndExpand"/>
             </StackLayout>
 
             <StackLayout
@@ -59,14 +33,22 @@
                     HorizontalOptions="FillAndExpand"/>
             </StackLayout>
 
+            <StackLayout Orientation="Horizontal">
             <Button
-                Text ="Зарегестрироваться"
+                Text ="Войти"
                 HeightRequest="45"
-                WidthRequest="250"
+                WidthRequest="130"
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
-                Command="{Binding RegistrationCommand}"/>
-
+                Command="{Binding AuthorizationCommand}"/>
+             <Button
+                 Text="Зарегестрировать"
+                 HeightRequest="45"
+                 WidthRequest="180"
+                 HorizontalOptions="Center"
+                 VerticalOptions="Center"
+                 Clicked="RegistrationClicked"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

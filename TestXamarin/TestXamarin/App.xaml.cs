@@ -1,5 +1,5 @@
 ﻿using TestXamarin.IoC;
-using TestXamarin.Page;
+using TestXamarin.Pages;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 

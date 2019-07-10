@@ -1,6 +1,6 @@
 ﻿using System;
 using Autofac;
-using TestXamarin.Page;
+using TestXamarin.Pages;
 using TestXamarin.Repositories.Users;
 using TestXamarin.ViewModel;
 
