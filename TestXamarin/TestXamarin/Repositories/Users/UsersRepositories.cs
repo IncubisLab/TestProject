@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using SQLite;
 using TestXamarin.IoC;
@@ -18,16 +19,51 @@ namespace TestXamarin.Repositories.Users
             Db.CreateTable<User>();
         }
 
-
-        public void CreatUser()
+        public User GetUser(string login, string password)
         {
-
+            var user = Db.Table<User>().SingleOrDefault(us => us.Login == login && us.Password == password);
+            return user;
         }
 
-
-        public void DeleteUser()
+        /// <summary>
+        /// Сохранение чека
+        /// </summary>
+        /// <param name="user">User</param>
+        public bool CreatUser(User user)
         {
+            try
+            {
+                Db.BeginTransaction();
+                Db.Insert(user);
+                Db.Commit();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Db.Rollback();
+                return false;
+            }
+        }
 
+        /// <summary>
+        /// Удаление пользователя
+        /// </summary>
+        /// <param name="user">User parameter</param>
+        /// <returns></returns>
+        public bool DeleteUser(User user)
+        {
+            try
+            {
+                Db.BeginTransaction();
+                Db.Delete(user);
+                Db.Commit();
+                return true;
+            }
+            catch (Exception e)
+            {
+                Db.Rollback();
+                return false;
+            }
         }
     }
 }

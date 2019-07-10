@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TestXamarin.Page.AuthorizationPage"
+             Title="Авторизация">
+    <ContentPage.Content>
+        <StackLayout 
+            VerticalOptions="CenterAndExpand"
+            HorizontalOptions="CenterAndExpand">
+            <StackLayout
+                Orientation="Vertical">
+                <Label 
+                    Text="Логин"
+                    TextColor="Black"
+                    VerticalOptions="CenterAndExpand"/>
+                <Entry
+                    Text ="{Binding Login}"
+                    Placeholder="Введите логин"
+                    Keyboard="Default"
+                    HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+
+            <StackLayout
+                Orientation="Vertical">
+                <Label 
+                    Text="Пароль"
+                    TextColor="Black"
+                    VerticalOptions="CenterAndExpand"/>
+                <Entry
+                    Text ="{Binding Password}"
+                    Placeholder="Введите пароль"
+                    Keyboard="Default"
+                    HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+            <Button
+                Text ="Войти"
+                HeightRequest="45"
+                WidthRequest="130"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Command="{Binding AuthorizationCommand}"/>
+             <Button
+                 Text="Зарегестрировать"
+                 HeightRequest="45"
+                 WidthRequest="180"
+                 HorizontalOptions="Center"
+                 VerticalOptions="Center"
+                 Clicked="RegistrationClicked"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
