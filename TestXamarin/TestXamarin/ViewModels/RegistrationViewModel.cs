@@ -4,7 +4,7 @@ using TestXamarin.Models;
 using TestXamarin.Repositories.Users;
 using Xamarin.Forms;
 
-namespace TestXamarin.ViewModel
+namespace TestXamarin.ViewModels
 {
     public class RegistrationViewModel : BaseViewModel
     {

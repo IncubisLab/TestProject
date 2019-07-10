@@ -2,7 +2,8 @@
 using Autofac;
 using TestXamarin.Pages;
 using TestXamarin.Repositories.Users;
-using TestXamarin.ViewModel;
+using TestXamarin.Services.Navigation;
+using TestXamarin.ViewModels;
 
 namespace TestXamarin.IoC
 {
@@ -33,7 +34,14 @@ namespace TestXamarin.IoC
 
         private static void ConfigureContainer(ContainerBuilder builder)
         {
-            
+
+            #region Services
+
+            builder.RegisterType<NavigationService>().As<INavigationService>();
+
+            #endregion
+
+
             #region Pages
 
             builder.RegisterType<AuthorizationPage>();

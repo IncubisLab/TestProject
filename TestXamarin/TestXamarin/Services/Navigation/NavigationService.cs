@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using TestXamarin.Exceptions;
 using TestXamarin.IoC;
 using TestXamarin.Pages;
-using TestXamarin.ViewModel;
+using TestXamarin.ViewModels;
 using Xamarin.Forms;
 
 namespace TestXamarin.Services.Navigation

@@ -1,18 +1,13 @@
-﻿using TestXamarin.Repositories.Users;
-using TestXamarin.ViewModel;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using Xamarin.Forms.Xaml;
 
 namespace TestXamarin.Pages
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class RegistrationPage : ContentPage
+	public partial class RegistrationPage : BasePage
     {
-       
-		public RegistrationPage (IUsersRepository usersRepository)
+		public RegistrationPage ()
         {
 			InitializeComponent ();
-            BindingContext = new RegistrationViewModel(usersRepository);
         }
 	}
 }

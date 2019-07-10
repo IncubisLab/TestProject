@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using TestXamarin.ViewModel;
+using TestXamarin.ViewModels;
 using Xamarin.Forms;
 
 namespace TestXamarin.Pages
