@@ -15,7 +15,7 @@ namespace TestXamarin.Page
         public AuthorizationPage()
         {
             InitializeComponent();
-            BindingContext = new AuthorizationViewModel();
+            BindingContext = new AuthorizationBaseViewModel();
         }
 
         private void AuthorizationClicked(object sender, EventArgs e)

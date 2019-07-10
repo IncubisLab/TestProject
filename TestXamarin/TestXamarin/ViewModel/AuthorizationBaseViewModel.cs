@@ -1,24 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows.Input;
-using TestXamarin.Models;
+﻿using System.Windows.Input;
 using TestXamarin.Repositories.Users;
 using Xamarin.Forms;
 
 namespace TestXamarin.ViewModel
 {
-    public class AuthorizationViewModel
+    public class AuthorizationBaseViewModel : BaseViewModel
     {
-        public string Login { get; set; }
+        private string _login;
+        private string _password;
 
-        public string Password { get; set; }
+        public string Login
+        {
+            get => _login;
+            set => SetProperty(ref _login, value);
+        }
+
+        public string Password
+        {
+            get => _password;
+            set => SetProperty(ref _password, value);
+        }
 
         private UsersRepositories _usersRepositories;
 
         public ICommand AuthorizationCommand { get; }
 
-        public AuthorizationViewModel()
+        public AuthorizationBaseViewModel()
         {
             AuthorizationCommand = new Command(AuthorizationUser);
             _usersRepositories = new UsersRepositories();
@@ -27,16 +34,9 @@ namespace TestXamarin.ViewModel
         private void AuthorizationUser()
         {
             //var user = _usersRepositories.GetUser(Login, Password);
-            //var result =_usersRepositories.CreatUser(new User
-            //{
-            //    Id = Guid.NewGuid(),
-            //    Login = this.Login,
-            //    Password = this.Password
-            //});
-
             Login = "AndreySh";
             Password = "456789";
-
         }
+
     }
 }
