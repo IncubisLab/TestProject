@@ -1,6 +1,5 @@
-﻿using System;
+﻿using TestXamarin.IoC;
 using TestXamarin.Page;
-using TestXamarin.Repositories.Users;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -9,13 +8,12 @@ namespace TestXamarin
 {
     public partial class App : Application
     {
-        private UsersRepositories _usersRepositories;
-
         public App()
         {
             InitializeComponent();
-            _usersRepositories = new UsersRepositories();
-            MainPage = new NavigationPage(new AuthorizationPage(_usersRepositories));
+
+            var authorizationPage = Locator.Resolve<AuthorizationPage>();
+            MainPage = new NavigationPage(authorizationPage);
             //MainPage = new MainPage();
         }
 

@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using SQLite;
 using TestXamarin.IoC;
 using TestXamarin.Models;
@@ -9,11 +7,11 @@ using Xamarin.Forms;
 
 namespace TestXamarin.Repositories.Users
 {
-    public class UsersRepositories
+    public class UsersRepository:IUsersRepository
     {
         private SQLiteConnection Db { get; }
 
-        public UsersRepositories()
+        public UsersRepository()
         {
             Db = new SQLiteConnection(System.IO.Path.Combine(DependencyService.Get<ISQLiteFolderProvide>().SqLiteProvide, "appDB"));
             Db.CreateTable<User>();
@@ -26,10 +24,10 @@ namespace TestXamarin.Repositories.Users
         }
 
         /// <summary>
-        /// Сохранение чека
+        /// Сохранение пользователя
         /// </summary>
         /// <param name="user">User</param>
-        public bool CreatUser(User user)
+        public bool CreateUser(User user)
         {
             try
             {

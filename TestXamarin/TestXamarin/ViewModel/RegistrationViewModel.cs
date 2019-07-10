@@ -13,7 +13,7 @@ namespace TestXamarin.ViewModel
         private string _lastName;
         private string _password;
 
-        private readonly UsersRepositories _usersRepositories;
+        private readonly IUsersRepository _usersRepository;
 
         public string Login
         {
@@ -42,9 +42,9 @@ namespace TestXamarin.ViewModel
 
         public ICommand RegistrationCommand { get; }
 
-        public RegistrationViewModel(UsersRepositories usersRepositories)
+        public RegistrationViewModel(IUsersRepository usersRepository)
         {
-            _usersRepositories = usersRepositories;
+            _usersRepository = usersRepository ?? throw new ArgumentNullException(nameof(usersRepository));
             RegistrationCommand = new Command(RegistrationUser);
         }
 
@@ -58,7 +58,7 @@ namespace TestXamarin.ViewModel
                 LastName = this.LastName,
                 Password = this.Password
             };
-           var result = _usersRepositories.CreatUser(user);
+           var result = _usersRepository.CreateUser(user);
 
             if (result)
                 ShowAlert("Сообщение", "Пользователь успешно создан!","Ок");

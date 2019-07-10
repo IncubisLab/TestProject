@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TestXamarin.Repositories.Users;
 using TestXamarin.ViewModel;
 using Xamarin.Forms;
@@ -13,18 +9,18 @@ namespace TestXamarin.Page
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AuthorizationPage : ContentPage
     {
-        private readonly UsersRepositories _usersRepositories;
+        private readonly IUsersRepository _usersRepository;
 
-        public AuthorizationPage(UsersRepositories usersRepositories)
+        public AuthorizationPage(IUsersRepository usersRepository)
         {
             InitializeComponent();
-            _usersRepositories = usersRepositories;
-            BindingContext = new AuthorizationViewModel(_usersRepositories);
+            _usersRepository = usersRepository;
+            BindingContext = new AuthorizationViewModel(_usersRepository);
         }
 
         private async void RegistrationClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new RegistrationPage(_usersRepositories));
+            await Navigation.PushAsync(new RegistrationPage(_usersRepository));
         }
     }
 }
