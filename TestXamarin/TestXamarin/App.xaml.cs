@@ -1,5 +1,6 @@
 ﻿using System;
 using TestXamarin.Page;
+using TestXamarin.Repositories.Users;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -8,11 +9,13 @@ namespace TestXamarin
 {
     public partial class App : Application
     {
+        private UsersRepositories _usersRepositories;
+
         public App()
         {
             InitializeComponent();
-
-            MainPage = new AuthorizationPage();
+            _usersRepositories = new UsersRepositories();
+            MainPage = new NavigationPage(new AuthorizationPage(_usersRepositories));
             //MainPage = new MainPage();
         }
 

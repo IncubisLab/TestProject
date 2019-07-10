@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestXamarin.Repositories.Users;
 using TestXamarin.ViewModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -12,15 +13,18 @@ namespace TestXamarin.Page
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AuthorizationPage : ContentPage
     {
-        public AuthorizationPage()
+        private readonly UsersRepositories _usersRepositories;
+
+        public AuthorizationPage(UsersRepositories usersRepositories)
         {
             InitializeComponent();
-            BindingContext = new AuthorizationBaseViewModel();
+            _usersRepositories = usersRepositories;
+            BindingContext = new AuthorizationViewModel(_usersRepositories);
         }
 
-        private void AuthorizationClicked(object sender, EventArgs e)
+        private async void RegistrationClicked(object sender, EventArgs e)
         {
-            DisplayAlert("Сообщение", "Авторизация пользователя", "Ок");
+            await Navigation.PushAsync(new RegistrationPage(_usersRepositories));
         }
     }
 }
