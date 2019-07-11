@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<pages:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TestXamarin.Page.AuthorizationPage"
+             xmlns:pages="clr-namespace:TestXamarin.Pages;assembly=TestXamarin"
+             x:Class="TestXamarin.Pages.AuthorizationPage"
              Title="Авторизация">
     <ContentPage.Content>
         <StackLayout 
@@ -42,13 +43,13 @@
                 VerticalOptions="Center"
                 Command="{Binding AuthorizationCommand}"/>
              <Button
-                 Text="Зарегестрировать"
+                 Text="Зарегистрировать"
                  HeightRequest="45"
                  WidthRequest="180"
                  HorizontalOptions="Center"
                  VerticalOptions="Center"
-                 Clicked="RegistrationClicked"/>
+                 Command="{Binding RegistrationCommand}"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
-</ContentPage>
+</pages:BasePage>

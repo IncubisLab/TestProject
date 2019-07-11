@@ -3,17 +3,24 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading.Tasks;
+using TestXamarin.IoC;
+using TestXamarin.Services.Navigation;
 using Xamarin.Forms;
 
-namespace TestXamarin.ViewModel
+namespace TestXamarin.ViewModels
 {
     public abstract class BaseViewModel : INotifyPropertyChanged
     {
         #region Private Fields
 
         private bool _isBusy;
+
+        #endregion
+
+        #region Protected fields
+
+        protected readonly INavigationService Navigation;
 
         #endregion
 
@@ -32,6 +39,13 @@ namespace TestXamarin.ViewModel
         }
 
         #endregion
+
+       
+
+        public BaseViewModel()
+        {
+            Navigation = Locator.Resolve<INavigationService>();
+        }
 
         public virtual Task OnPageAppearing()
         {
