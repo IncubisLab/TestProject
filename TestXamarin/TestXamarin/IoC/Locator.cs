@@ -1,6 +1,7 @@
 ﻿using System;
 using Autofac;
 using TestXamarin.Pages;
+using TestXamarin.Repositories.Notes;
 using TestXamarin.Repositories.Users;
 using TestXamarin.Services.Navigation;
 using TestXamarin.ViewModels;
@@ -47,6 +48,7 @@ namespace TestXamarin.IoC
             builder.RegisterType<AuthorizationPage>();
             builder.RegisterType<RegistrationPage>();
             builder.RegisterType<MainPage>();
+            builder.RegisterType<NotesPage>();
 
             #endregion
 
@@ -54,12 +56,14 @@ namespace TestXamarin.IoC
 
             builder.RegisterType<AuthorizationViewModel>();
             builder.RegisterType<RegistrationViewModel>();
+            builder.RegisterType<NotesViewModel>();
 
             #endregion
 
             #region Repositories
 
             builder.RegisterType<UsersRepository>().As<IUsersRepository>().SingleInstance();
+            builder.RegisterType<NotesRepository>().As<INotesRepository>().SingleInstance();
 
             #endregion
         }

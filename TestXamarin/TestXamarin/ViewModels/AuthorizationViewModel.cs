@@ -42,7 +42,8 @@ namespace TestXamarin.ViewModels
         {
             var user = _usersRepository.GetUser(Login, Password);
             if (user != null)
-            ShowAlert("Сообщение", "Логин: " + user.Login + "\nИмя: " + user.Name + "\nФамилия: " + user.LastName, "Ок");
+                Navigation.NavigateToAsync<NotesPage>(user);
+            //ShowAlert("Сообщение", "Логин: " + user.Login + "\nИмя: " + user.Name + "\nФамилия: " + user.LastName, "Ок");
         }
 
         private async Task RegistrationUserAsync()

@@ -15,10 +15,5 @@ namespace TestXamarin.Pages
             InitializeComponent();
             BindingContext = new AuthorizationViewModel(usersRepository);
         }
-
-        private async void RegistrationClicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new RegistrationPage());
-        }
     }
 }
