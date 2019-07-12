@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using Rg.Plugins.Popup.Pages;
+using Rg.Plugins.Popup.Services;
 using TestXamarin.IoC;
 using TestXamarin.Services.Navigation;
 using Xamarin.Forms;
@@ -60,6 +62,11 @@ namespace TestXamarin.ViewModels
         public virtual Task InitializeAsync(object navigationData)
         {
             return Task.FromResult(false);
+        }
+
+        protected void ShowPopup<T>(T popupPage) where T : PopupPage
+        {
+            Device.BeginInvokeOnMainThread(async () => await PopupNavigation.Instance.PushAsync(popupPage));
         }
 
         protected void OnPropertyChanged(string propertyName)

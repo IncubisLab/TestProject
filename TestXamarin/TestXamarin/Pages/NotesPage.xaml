@@ -5,10 +5,20 @@
              x:Class="TestXamarin.Pages.NotesPage">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Создание заметки" Command="{Binding CreateNoteCommand}" Order="Secondary" />
+        <ToolbarItem Text="Очистить заметки" Command="{Binding ClearNoteCommand}" Order="Secondary"/>
+        <ToolbarItem Text="Обновить список"  Command="{Binding UpdateNoteCommand}" Order="Secondary"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ListView
-            ItemsSource="{Binding Notes}">
+            Margin ="7"
+            SeparatorVisibility="None"
+            ItemSelected="NoteSelected"
+            ItemTapped="ShowNote"
+            RefreshCommand="{Binding RefreshNotesCommand}"
+            ItemsSource="{Binding Notes}"
+            IsRefreshing="{Binding IsRefreshing}"
+            VerticalOptions="Fill"
+            HorizontalOptions="Fill">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

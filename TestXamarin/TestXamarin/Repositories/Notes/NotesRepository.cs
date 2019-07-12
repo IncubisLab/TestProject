@@ -28,7 +28,7 @@ namespace TestXamarin.Repositories.Notes
         {
             try
             {
-                Db.Commit();
+                Db.BeginTransaction();
                 Db.Insert(note);
                 Db.Commit();
                 return true;
@@ -42,5 +42,46 @@ namespace TestXamarin.Repositories.Notes
 
         public IList<Note> GetNotes(Guid userId)
             => Db.Table<Note>().Where(notes => notes.UserId == userId).ToList();
+
+        /// <summary>
+        /// Удаление заметки
+        /// </summary>
+        /// <param name="note"></param>
+        /// <returns></returns>
+        public bool Remove(Note note)
+        {
+            try
+            {
+                Db.RunInTransaction(() => { Db.Delete<Note>(note); });
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Db.Rollback();
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Очистка всех заметок
+        /// </summary>
+        /// <returns></returns>
+        public bool Clear()
+        {
+            try
+            {
+                Db.RunInTransaction(() =>
+                {
+                    Db.DeleteAll<Note>();
+                });
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Db.Rollback();
+                return false;
+            }
+        }
     }
 }

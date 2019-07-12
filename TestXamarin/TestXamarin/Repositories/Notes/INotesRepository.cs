@@ -19,5 +19,18 @@ namespace TestXamarin.Repositories.Notes
         /// <param name="userId">Id пользователя</param>
         /// <returns></returns>
         IList<Note> GetNotes(Guid userId);
+
+        /// <summary>
+        /// Удаление заметки
+        /// </summary>
+        /// <param name="note"></param>
+        /// <returns></returns>
+        bool Remove(Note note);
+
+        /// <summary>
+        /// Удаление всех заметок
+        /// </summary>
+        /// <returns></returns>
+        bool Clear();
     }
 }
